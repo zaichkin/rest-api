@@ -1,0 +1,4 @@
+Добавить в таблицу product поле скидку,
+Изменить поля в бд description, image. В моделях тоже.
+Добавть Array характеристики, исправить size на varchar array.
+Workspace в worker сделать массивом

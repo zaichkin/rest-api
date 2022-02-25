@@ -1,0 +1,10 @@
+{
+    "ServerHost":"127.0.0.1",
+    "ServerPort":"9999",
+    "PgUser": "postgres",
+    "PgPasswd": "1346",
+    "PgHost": "localhost",
+    "PgPort": "5432",
+    "PgDB": "test",
+    "CountConnect": 5
+}
