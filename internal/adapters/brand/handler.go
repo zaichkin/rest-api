@@ -31,7 +31,7 @@ func (h *handler) Register(router *httprouter.Router) {
 	router.GET(fewURL, h.ListItems)
 	router.POST(fewURL, h.AddItem)
 	router.PUT(solURL, h.UpdateItem)
-	router.DELETE(fewURL, h.DeleteItem)
+	router.DELETE(solURL, h.DeleteItem)
 }
 
 func (h *handler) AddItem(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
@@ -64,13 +64,7 @@ func (h *handler) AddItem(w http.ResponseWriter, r *http.Request, params httprou
 }
 
 func (h *handler) DeleteItem(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
-	var dto brand.DeleteBrandDTO
-	if err := json.NewDecoder(r.Body).Decode(&dto); err != nil {
-		w.WriteHeader(http.StatusBadRequest)
-		w.Write([]byte("invalid input body"))
-		return
-	}
-	r.Body.Close()
+	var dto = brand.DeleteBrandDTO{Id: params.ByName("id")}
 
 	if err := h.storage.DeleteRowDB(context.TODO(), dto); err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
