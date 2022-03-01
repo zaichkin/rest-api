@@ -72,6 +72,8 @@ func (h *handler) DeleteItem(w http.ResponseWriter, r *http.Request, params http
 		return
 	}
 
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.WriteHeader(http.StatusNoContent)
 	w.Write([]byte("Delete Brand"))
 }
 
@@ -101,6 +103,7 @@ func (h *handler) UpdateItem(w http.ResponseWriter, r *http.Request, params http
 
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(br)
 }
 
